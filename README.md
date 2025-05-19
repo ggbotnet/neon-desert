@@ -22,3 +22,8 @@ This is my first Game Jam, and I developed this game solo in just 48 hours for M
 ## Video
 - [Watch the Gameplay Video](https://www.youtube.com/watch?v=Fklt37jx10E)
 - [Watch the Game's Development Process Video](https://www.youtube.com/watch?v=WW0sU6xpY)
+
+## Links
+- **Play in Browser & Download**: [https://ggbot.itch.io/neon-desert](https://ggbot.itch.io/neon-desert)
+- **Submission Page for Miz Jam 1**: [https://itch.io/jam/miz-jam-1/rate/735142](https://itch.io/jam/miz-jam-1/rate/735142)
+- **Official Game Jam Page**: [https://itch.io/jam/miz-jam-1](https://itch.io/jam/miz-jam-1)
