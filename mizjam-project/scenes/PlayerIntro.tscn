@@ -1,0 +1,154 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://assets/player_nogun.png" type="Texture" id=1]
+[ext_resource path="res://scripts/PlayerIntro.gd" type="Script" id=2]
+[ext_resource path="res://assets/gameover.png" type="Texture" id=3]
+[ext_resource path="res://Theme.tres" type="Theme" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "move_down"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Rect2( 0, 128, 128, 128 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "move_left"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Rect2( 128, 0, 128, 128 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "move_right"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Rect2( 0, 0, 128, 128 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "move_up"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Rect2( 128, 128, 128, 128 ) ]
+}
+
+[sub_resource type="CapsuleShape2D" id=5]
+radius = 28.0384
+height = 2.91214
+
+[node name="Player" type="KinematicBody2D" groups=[
+"Player",
+]]
+collision_mask = 6
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 128, 128, 128 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/move_down = SubResource( 1 )
+anims/move_left = SubResource( 2 )
+anims/move_right = SubResource( 3 )
+anims/move_up = SubResource( 4 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+layer = 100
+
+[node name="Popup" type="Popup" parent="Camera2D/CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorMask" type="ColorRect" parent="Camera2D/CanvasLayer/Popup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameOver" type="TextureRect" parent="Camera2D/CanvasLayer/Popup"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -150.0
+margin_right = 200.0
+margin_bottom = 150.0
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BtnContinue" type="Button" parent="Camera2D/CanvasLayer/Popup"]
+margin_left = 560.0
+margin_top = 392.0
+margin_right = 720.0
+margin_bottom = 440.0
+theme = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BtnEnd" type="Button" parent="Camera2D/CanvasLayer/Popup"]
+margin_left = 600.0
+margin_top = 440.0
+margin_right = 680.0
+margin_bottom = 488.0
+theme = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0.637542, 7.29517 )
+shape = SubResource( 5 )
+
+[node name="TurnAxis" type="Position2D" parent="."]
+rotation = 0.785398
+
+[node name="GunPoint" type="Position2D" parent="TurnAxis"]
+position = Vector2( 35, 0 )
+[connection signal="pressed" from="Camera2D/CanvasLayer/Popup/BtnContinue" to="." method="_on_BtnContinue_pressed"]
+[connection signal="pressed" from="Camera2D/CanvasLayer/Popup/BtnEnd" to="." method="_on_BtnEnd_pressed"]
