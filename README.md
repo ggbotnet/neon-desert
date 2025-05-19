@@ -21,7 +21,7 @@ This is my first Game Jam, and I developed this game solo in just 48 hours for M
 
 ## Video
 - [Watch the Gameplay Video](https://www.youtube.com/watch?v=Fklt37jx10E)
-- [Watch the Game's Development Process Video](https://www.youtube.com/watch?v=WW0sU6xpY)
+- [Watch the Game's Development Process Video](https://www.youtube.com/watch?v=d-WW0sU6xpY)
 
 ## Links
 - **Play in Browser & Download**: [https://ggbot.itch.io/neon-desert](https://ggbot.itch.io/neon-desert)
